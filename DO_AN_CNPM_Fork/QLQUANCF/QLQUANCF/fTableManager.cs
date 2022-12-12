@@ -230,6 +230,15 @@ namespace QLQUANCF
             f.InsertFood += F_InsertFood;
             f.DeleteFood += F_DeleteFood;
             f.UpdateFood += F_UpdateFood;
+
+            f.InsertCategory += F_InsertCategory;
+            f.DeleteCategoryE += F_DeleteCategoryE;
+            f.UpdateCategoryE += F_UpdateCategoryE;
+
+            //BÁT sự kiện lại trong form cha của bàn
+            f.InsertTableFood += F_InsertTableFood;
+            f.DeleteTableFood += F_DeleteTableFood;
+            //f.UpdateTableFood += F_UpdateTableFood;
             f.ShowDialog();
         }
 
@@ -336,5 +345,61 @@ namespace QLQUANCF
         {
             btnAddFood_Click(this, new EventArgs());
         }
+
+        //hàm event từ fAdmin
+        private void F_UpdateCategoryE(object? sender, EventArgs e)
+        {
+            LoadCategory();
+            if (lsvBill.Tag != null)
+                ShowBill((lsvBill.Tag as Table).IdTableFood);
+        }
+
+        private void F_DeleteCategoryE(object? sender, EventArgs e)
+        {
+            LoadCategory();
+            if (lsvBill.Tag != null)
+                ShowBill((lsvBill.Tag as Table).IdTableFood);
+            LoadTable();
+        }
+
+        private void F_InsertCategory(object? sender, EventArgs e)
+        {
+            LoadCategory();
+            if (lsvBill.Tag != null)
+                ShowBill((lsvBill.Tag as Table).IdTableFood);
+        }
+
+        private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            fCustomer f = new fCustomer();
+            f.ShowDialog();
+        }
+
+        //bắt event ở form cha từ fadmin
+
+
+
+
+        private void F_DeleteTableFood(object? sender, EventArgs e)
+        {
+            if (lsvBill.Tag != null)
+                ShowBill((lsvBill.Tag as Table).IdTableFood);
+            LoadTable();
+        }
+
+        private void F_InsertTableFood(object? sender, EventArgs e)
+        {
+            if (lsvBill.Tag != null)
+                ShowBill((lsvBill.Tag as Table).IdTableFood);
+            LoadTable();
+        }
+
+        private void F_UpdateTableFood(object? sender, EventArgs e)
+        {
+            if (lsvBill.Tag != null)
+                ShowBill((lsvBill.Tag as Table).IdTableFood);
+            LoadTable();
+        }
+
     }
 }

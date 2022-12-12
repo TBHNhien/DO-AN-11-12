@@ -51,5 +51,52 @@ namespace QLQUANCF.DAO
         {
             return DataProvider.Instance.ExecuteQuery("select idTableFood , name , status from tablefood");
         }
+
+        // hàm thêm xóa sửa bàn
+        public bool InsertTableFood()
+        {
+            string query = string.Format("EXEC INSERT_TABLE");
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
+
+        public bool UpdateTableFood(int idtablefood, string status, string name)
+        {
+            string query = string.Format("update TABLEFOOD SET STATUS = N'{1}' , NAME = N'{2}' WHERE IDTABLEFOOD = N'{0}' ", idtablefood, status, name);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
+
+
+        public bool DeleteTableFood(int idTableFood)
+        {
+            BillInfoDAO.Instance.DeleteBillInfoByIDTableFood(idTableFood);
+
+            BillDAO.Instance.DeleteBillByIDTableFood(idTableFood);
+
+
+
+            string query = string.Format("DELETE TABLEFOOD where IDTableFood = '{0}'", idTableFood);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+
+        public List<Table> GetTableByIDTableFood(int idTableFood)
+        {
+            List<Table> list = new List<Table>();
+
+            string query = "select * from tablefood where idtablefood = " + idTableFood;
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                Table table = new Table(item);
+                list.Add(table);
+            }
+
+            return list;
+        }
     }
 }

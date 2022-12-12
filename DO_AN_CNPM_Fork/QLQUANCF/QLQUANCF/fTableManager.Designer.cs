@@ -56,6 +56,7 @@
             this.cb1Category = new System.Windows.Forms.ComboBox();
             this.nmFoodCount = new System.Windows.Forms.NumericUpDown();
             this.flpTable = new System.Windows.Forms.FlowLayoutPanel();
+            this.kháchHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -70,7 +71,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.adminToolStripMenuItem,
             this.thôngTinTàiKhoảnToolStripMenuItem,
-            this.chứcNăngToolStripMenuItem});
+            this.chứcNăngToolStripMenuItem,
+            this.kháchHàngToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 3, 0, 3);
@@ -99,14 +101,14 @@
             // thôngTinCáNhânToolStripMenuItem
             // 
             this.thôngTinCáNhânToolStripMenuItem.Name = "thôngTinCáNhânToolStripMenuItem";
-            this.thôngTinCáNhânToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
+            this.thôngTinCáNhânToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.thôngTinCáNhânToolStripMenuItem.Text = "Thông tin cá nhân";
             this.thôngTinCáNhânToolStripMenuItem.Click += new System.EventHandler(this.thôngTinCáNhânToolStripMenuItem_Click);
             // 
             // đăngXuâtToolStripMenuItem
             // 
             this.đăngXuâtToolStripMenuItem.Name = "đăngXuâtToolStripMenuItem";
-            this.đăngXuâtToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
+            this.đăngXuâtToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.đăngXuâtToolStripMenuItem.Text = "Đăng Xuât";
             this.đăngXuâtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuâtToolStripMenuItem_Click);
             // 
@@ -123,7 +125,7 @@
             // 
             this.thanhToánToolStripMenuItem.Name = "thanhToánToolStripMenuItem";
             this.thanhToánToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.thanhToánToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.thanhToánToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.thanhToánToolStripMenuItem.Text = "Thanh toán";
             this.thanhToánToolStripMenuItem.Click += new System.EventHandler(this.thanhToánToolStripMenuItem_Click);
             // 
@@ -131,7 +133,7 @@
             // 
             this.thêmMónToolStripMenuItem.Name = "thêmMónToolStripMenuItem";
             this.thêmMónToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.thêmMónToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.thêmMónToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.thêmMónToolStripMenuItem.Text = "Thêm món";
             this.thêmMónToolStripMenuItem.Click += new System.EventHandler(this.thêmMónToolStripMenuItem_Click);
             // 
@@ -312,6 +314,14 @@
             this.flpTable.TabIndex = 4;
             this.flpTable.Paint += new System.Windows.Forms.PaintEventHandler(this.flpTable_Paint);
             // 
+            // kháchHàngToolStripMenuItem
+            // 
+            this.kháchHàngToolStripMenuItem.BackColor = System.Drawing.Color.Red;
+            this.kháchHàngToolStripMenuItem.Name = "kháchHàngToolStripMenuItem";
+            this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(103, 24);
+            this.kháchHàngToolStripMenuItem.Text = "Khách Hàng";
+            this.kháchHàngToolStripMenuItem.Click += new System.EventHandler(this.kháchHàngToolStripMenuItem_Click);
+            // 
             // fTableManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -374,5 +384,6 @@
         private ToolStripMenuItem chứcNăngToolStripMenuItem;
         private ToolStripMenuItem thanhToánToolStripMenuItem;
         private ToolStripMenuItem thêmMónToolStripMenuItem;
+        private ToolStripMenuItem kháchHàngToolStripMenuItem;
     }
 }

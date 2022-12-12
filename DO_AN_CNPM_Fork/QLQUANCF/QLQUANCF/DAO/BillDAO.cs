@@ -71,8 +71,13 @@ namespace QLQUANCF.DAO
             {
                 return 1;
             }
-            
 
+        }
+        //xóa BILL trước khi xóa được table
+        public void DeleteBillByIDTableFood(int idTableFood)
+        {
+            string query = string.Format("DELETE BILL WHERE IDBILL IN(SELECT B.IDBILL FROM  BILL B, TABLEFOOD T WHERE T.IDTABLEFOOD = B.IDTABLEFOOD AND T.IDTABLEFOOD = {0})", idTableFood);
+            DataProvider.Instance.ExecuteQuery(query);
         }
     }
 }

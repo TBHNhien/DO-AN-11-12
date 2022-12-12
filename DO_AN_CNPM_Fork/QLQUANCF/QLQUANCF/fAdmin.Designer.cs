@@ -124,6 +124,7 @@
             this.btnEditStore = new System.Windows.Forms.Button();
             this.btnDeleteStore = new System.Windows.Forms.Button();
             this.btnAddStore = new System.Windows.Forms.Button();
+            this.tbPayroll = new System.Windows.Forms.TabPage();
             this.tbAccount = new System.Windows.Forms.TabPage();
             this.panel23 = new System.Windows.Forms.Panel();
             this.btnResetPass = new System.Windows.Forms.Button();
@@ -143,7 +144,6 @@
             this.btnEditAccount = new System.Windows.Forms.Button();
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.btnAddAccount = new System.Windows.Forms.Button();
-            this.tbPayroll = new System.Windows.Forms.TabPage();
             this.tcAdmin.SuspendLayout();
             this.tbBill.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -724,6 +724,9 @@
             // cbbTableStatus
             // 
             this.cbbTableStatus.FormattingEnabled = true;
+            this.cbbTableStatus.Items.AddRange(new object[] {
+            "Trống",
+            "CÓ NGƯỜI"});
             this.cbbTableStatus.Location = new System.Drawing.Point(171, 20);
             this.cbbTableStatus.Name = "cbbTableStatus";
             this.cbbTableStatus.Size = new System.Drawing.Size(316, 28);
@@ -829,6 +832,7 @@
             this.btnShowTable.TabIndex = 3;
             this.btnShowTable.Text = "Xem";
             this.btnShowTable.UseVisualStyleBackColor = true;
+            this.btnShowTable.Click += new System.EventHandler(this.btnShowTable_Click);
             // 
             // btnEditTable
             // 
@@ -838,6 +842,7 @@
             this.btnEditTable.TabIndex = 2;
             this.btnEditTable.Text = "Sửa";
             this.btnEditTable.UseVisualStyleBackColor = true;
+            this.btnEditTable.Click += new System.EventHandler(this.btnEditTable_Click_1);
             // 
             // btnDeleteTable
             // 
@@ -847,6 +852,7 @@
             this.btnDeleteTable.TabIndex = 1;
             this.btnDeleteTable.Text = "Xóa";
             this.btnDeleteTable.UseVisualStyleBackColor = true;
+            this.btnDeleteTable.Click += new System.EventHandler(this.btnDeleteTable_Click_1);
             // 
             // btnAddTable
             // 
@@ -856,6 +862,7 @@
             this.btnAddTable.TabIndex = 0;
             this.btnAddTable.Text = "Thêm";
             this.btnAddTable.UseVisualStyleBackColor = true;
+            this.btnAddTable.Click += new System.EventHandler(this.btnAddTable_Click_1);
             // 
             // tbStore
             // 
@@ -1155,6 +1162,15 @@
             this.btnAddStore.UseVisualStyleBackColor = true;
             this.btnAddStore.Click += new System.EventHandler(this.btnAddStore_Click);
             // 
+            // tbPayroll
+            // 
+            this.tbPayroll.Location = new System.Drawing.Point(4, 29);
+            this.tbPayroll.Name = "tbPayroll";
+            this.tbPayroll.Size = new System.Drawing.Size(1008, 462);
+            this.tbPayroll.TabIndex = 7;
+            this.tbPayroll.Text = "Tính Lương";
+            this.tbPayroll.UseVisualStyleBackColor = true;
+            // 
             // tbAccount
             // 
             this.tbAccount.BackColor = System.Drawing.Color.Transparent;
@@ -1343,15 +1359,6 @@
             this.btnAddAccount.Text = "Thêm";
             this.btnAddAccount.UseVisualStyleBackColor = true;
             this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
-            // 
-            // tbPayroll
-            // 
-            this.tbPayroll.Location = new System.Drawing.Point(4, 24);
-            this.tbPayroll.Name = "tbPayroll";
-            this.tbPayroll.Size = new System.Drawing.Size(881, 343);
-            this.tbPayroll.TabIndex = 7;
-            this.tbPayroll.Text = "Tính Lương";
-            this.tbPayroll.UseVisualStyleBackColor = true;
             // 
             // fAdmin
             // 

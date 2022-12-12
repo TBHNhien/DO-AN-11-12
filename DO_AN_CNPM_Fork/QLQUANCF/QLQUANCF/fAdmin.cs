@@ -809,5 +809,106 @@ namespace QLQUANCF
             int id = Convert.ToInt32(txbCategoryID.Text);
             DeleteCategory(id);
         }
+
+        private event EventHandler insertCategory;
+        public event EventHandler InsertCategory
+        {
+            add { insertCategory += value; }
+            remove { insertCategory -= value; }
+        }
+
+        private event EventHandler deleteCategoryE;
+        public event EventHandler DeleteCategoryE
+        {
+            add { deleteCategoryE += value; }
+            remove { deleteCategoryE -= value; }
+        }
+
+        private event EventHandler updateCategoryE;
+        public event EventHandler UpdateCategoryE
+        {
+            add { updateFood += value; }
+            remove { updateFood -= value; }
+        }
+
+        //event các nút bàn ăn
+
+        private event EventHandler insertTableFood;
+        public event EventHandler InsertTableFood
+        {
+            add { insertTableFood += value; }
+            remove { insertTableFood -= value; }
+        }
+
+        private event EventHandler deleteTableFood;
+        public event EventHandler DeleteTableFood
+        {
+            add { deleteTableFood += value; }
+            remove { deleteTableFood -= value; }
+        }
+
+        private event EventHandler updateTableFood;
+        public event EventHandler UpdateTableFood
+        {
+            add { updateFood += value; }
+            remove { updateFood -= value; }
+        }
+
+        private void btnAddTable_Click_1(object sender, EventArgs e)
+        {
+            if (TableDAO.Instance.InsertTableFood())
+            {
+                MessageBox.Show("Thêm bàn thành công !!!");
+                LoadTableList();
+                if (insertTableFood != null)
+                    insertTableFood(this, new EventArgs());
+            }
+            else
+            {
+                MessageBox.Show("Lỗi khi thêm BÀN !!!");
+            }
+        }
+
+        private void btnDeleteTable_Click_1(object sender, EventArgs e)
+        {
+            int idtablefood = Convert.ToInt32(txbTableID.Text);
+
+            if (TableDAO.Instance.DeleteTableFood(idtablefood))
+            {
+                MessageBox.Show("Xóa bàn thành công !!!");
+                LoadTableList();
+                if (deleteTableFood != null)
+                    deleteTableFood(this, new EventArgs());
+            }
+            else
+            {
+                MessageBox.Show("Lỗi khi xóa bàn !!!");
+            }
+        }
+
+        private void btnEditTable_Click_1(object sender, EventArgs e)
+        {
+            int idtablefood = Convert.ToInt32(txbTableID.Text);
+            string name = txbTableName.Text;
+
+            string status = (cbbTableStatus.Text);
+
+            if (TableDAO.Instance.UpdateTableFood(idtablefood, status, name))
+            {
+                MessageBox.Show("Sửa bàn thành công !!!");
+                LoadTableList();
+                if (updateTableFood != null)
+                    updateTableFood(this, new EventArgs());
+            }
+            else
+            {
+                MessageBox.Show("Lỗi khi sửa bàn !!!");
+            }
+        }
+
+        private void btnShowTable_Click(object sender, EventArgs e)
+        {
+            LoadTableList();
+        }
     }
 }

@@ -71,5 +71,13 @@ namespace QLQUANCF.DAO
             string query = string.Format("Delete billinfo where idFood in (select idfood from food f, foodcategory fc where f.idfoodcategory = fc.idfoodcategory and fc.idfoodcategory = {0} )" , idFoodCategory);
             DataProvider.Instance.ExecuteQuery(query);
         }
+
+
+        //XÓA bàn phải xóa được billInfo trước
+        public void DeleteBillInfoByIDTableFood(int idTableFood)
+        {
+            string query = string.Format("DELETE BILLINFO WHERE IDBILL IN(SELECT BF.IDBILL FROM BILLINFO BF, BILL B, TABLEFOOD T WHERE BF.IDBILL = B.IDBILL AND T.IDTABLEFOOD = B.IDTABLEFOOD AND T.IDTABLEFOOD = {0})", idTableFood);
+            DataProvider.Instance.ExecuteQuery(query);
+        }
     }
 }
