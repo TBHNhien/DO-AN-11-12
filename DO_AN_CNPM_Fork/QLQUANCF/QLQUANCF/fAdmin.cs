@@ -910,5 +910,10 @@ namespace QLQUANCF
         {
             LoadTableList();
         }
+
+        private void txbSearchFoodName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

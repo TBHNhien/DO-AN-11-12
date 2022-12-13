@@ -28,7 +28,7 @@ namespace QLQUANCF.DTO
 
             var dateCheckOutTemp = row["dateCheckOut"];
             if (dateCheckOutTemp.ToString()!="")
-            this.DateCheckOut = (DateTime?)row["dateCheckOutTemp"];
+            this.DateCheckOut = (DateTime?)dateCheckOutTemp;
             this.Status = (int)row["status"];
             this.Discount = (int)row["discount"];
         }

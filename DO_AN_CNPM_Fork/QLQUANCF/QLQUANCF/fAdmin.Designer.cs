@@ -327,6 +327,7 @@
             this.txbSearchFoodName.Name = "txbSearchFoodName";
             this.txbSearchFoodName.Size = new System.Drawing.Size(390, 27);
             this.txbSearchFoodName.TabIndex = 5;
+            this.txbSearchFoodName.TextChanged += new System.EventHandler(this.txbSearchFoodName_TextChanged);
             // 
             // button1
             // 

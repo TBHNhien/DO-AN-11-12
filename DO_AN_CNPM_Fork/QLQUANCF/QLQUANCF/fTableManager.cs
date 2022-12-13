@@ -401,5 +401,9 @@ namespace QLQUANCF
             LoadTable();
         }
 
+        private void cbFood_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

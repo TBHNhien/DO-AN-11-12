@@ -79,5 +79,23 @@ namespace QLQUANCF.DAO
             string query = string.Format("DELETE BILL WHERE IDBILL IN(SELECT B.IDBILL FROM  BILL B, TABLEFOOD T WHERE T.IDTABLEFOOD = B.IDTABLEFOOD AND T.IDTABLEFOOD = {0})", idTableFood);
             DataProvider.Instance.ExecuteQuery(query);
         }
+
+        //HIỂN THỊ DANH SÁCH BILL
+        public List<Bill> GetListBillToday()
+        {
+            List<Bill> list = new List<Bill>();
+
+            string query = "select * from bill where DATECHECKIN = convert(date,getdate())";
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                Bill bill = new Bill(item);
+                list.Add(bill);
+            }
+
+            return list;
+        }
     }
 }
