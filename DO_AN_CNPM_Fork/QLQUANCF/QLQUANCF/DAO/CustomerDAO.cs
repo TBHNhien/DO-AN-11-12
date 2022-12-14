@@ -22,7 +22,7 @@ namespace QLQUANCF.DAO
         private CustomerDAO() { }
 
         //
-        public List<Customer> GetFoodByIDBill(int id)
+        public List<Customer> GetCustomerByIDBill(int id)
         {
             List<Customer> list = new List<Customer>();
 
@@ -111,5 +111,15 @@ namespace QLQUANCF.DAO
             return list;
         }
 
+        //phân trang
+        public DataTable GetListCustomerByPage (int pagenum)
+        {
+            return DataProvider.Instance.ExecuteQuery ("EXEC USP_GetListCustomerByPage @pagenum" , new object[] { pagenum });
+        }
+
+        public int GetNumberIDBill()
+        {
+            return (int)DataProvider.Instance.ExecuteScalar("EXEC USP_GetNumIDBill");
+        }
     }
 }

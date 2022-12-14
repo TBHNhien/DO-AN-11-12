@@ -959,3 +959,107 @@ SELECT * FROM CUSTOMER WHERE dbo.fuConvertToUnsign1(NAMECUSTOMER) LIKE N'%' + db
 select * from bill where DATECHECKIN = convert(date,getdate())
 
 print convert(date,getdate())
+
+-- PHÂN TRANG
+
+
+
+--LẤY 2 DÒNG ĐẦU
+SELECT TOP 2 * FROM CUSTOMER
+
+
+
+--LẤY 2 DÒNG GIỮA
+--GIẢ SỬ 1 PAGE 2 DÒNG
+--PAGECOUNT =2 
+--PAGENUM = 2
+
+SELECT TOP 4 * FROM CUSTOMER
+EXCEPT
+SELECT TOP 2 * FROM CUSTOMER
+
+--
+SELECT TOP (PAGECOUNT*PAGENUM) * FROM CUSTOMER
+EXCEPT
+SELECT TOP PAGECOUNT * FROM CUSTOMER
+
+
+--tạp PROC
+
+select (IDBILL) from bill where DATECHECKIN = convert(date,getdate())
+
+
+CREATE PROC USP_GetListCustomerByPage_Today
+@PAGE INT 
+AS
+	BEGIN
+	DECLARE @PAGEROWS INT = 2 -- 1 TRNAG BAO NHIÊU DÒNG
+	DECLARE @SELECTROWS INT = @PAGEROWS * @PAGE --SỐ DÒNG SẼ SELECT RA
+	DECLARE @EXCEPTROWS INT = (@PAGE - 1) * @PAGEROWS --SỐ DÒNG TRỪ RA
+
+	;WITH CustomerShow as ( SELECT * FROM CUSTOMER WHERE IDBILL IN (select (IDBILL) from bill where DATECHECKIN = convert(date,getdate())) )
+
+	SELECT TOP (@SELECTROWS) * FROM CustomerShow
+	EXCEPT
+	SELECT TOP (@EXCEPTROWS) * FROM CustomerShow
+
+	END
+
+
+CREATE PROC USP_GetListCustomerByPage
+@PAGE INT 
+AS
+	BEGIN
+	DECLARE @PAGEROWS INT = 2 -- 1 TRNAG BAO NHIÊU DÒNG
+	DECLARE @SELECTROWS INT = @PAGEROWS * @PAGE --SỐ DÒNG SẼ SELECT RA
+	DECLARE @EXCEPTROWS INT = (@PAGE - 1) * @PAGEROWS --SỐ DÒNG TRỪ RA
+
+	;WITH CustomerShow as ( SELECT * FROM CUSTOMER  )
+
+	SELECT TOP (@SELECTROWS) * FROM CustomerShow
+	EXCEPT
+	SELECT TOP (@EXCEPTROWS) * FROM CustomerShow
+
+	END
+
+--PAGE SẼ BẮT ĐẦU TỪ 1
+EXEC USP_GetListCustomerByPage 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

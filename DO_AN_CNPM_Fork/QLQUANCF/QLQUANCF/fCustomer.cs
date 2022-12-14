@@ -231,5 +231,49 @@ namespace QLQUANCF
         {
 
         }
+
+        private void btnFirstBillPage_Click(object sender, EventArgs e)
+        {
+            txbPageCustomer.Text = "1";
+            int page = Convert.ToInt32(txbPageCustomer.Text);
+            dtgvCustomer.DataSource = CustomerDAO.Instance.GetListCustomerByPage(page);
+        }
+
+        private void btnLastCustomerPage_Click(object sender, EventArgs e)
+        {
+            int sumRecord = CustomerDAO.Instance.GetNumberIDBill();
+            int lastPage = sumRecord / 5;
+
+            if (sumRecord % 5 != 0)
+                lastPage ++;
+
+            txbPageCustomer.Text = lastPage.ToString();
+        }
+
+        private void txbPageCustomer_TextChanged(object sender, EventArgs e)
+        {
+            dtgvCustomer.DataSource =  CustomerDAO.Instance.GetListCustomerByPage(Convert.ToInt32(txbPageCustomer.Text));
+        }
+
+        private void btnPreviousCustomerPage_Click(object sender, EventArgs e)
+        {
+            int page = Convert.ToInt32(txbPageCustomer.Text);
+
+            if (page>1)
+                page--;
+
+            txbPageCustomer.Text = page.ToString();
+        }
+
+        private void btnNextCustomerPage_Click(object sender, EventArgs e)
+        {
+            int page = Convert.ToInt32(txbPageCustomer.Text);
+            int sumRecord = CustomerDAO.Instance.GetNumberIDBill();
+
+            if (page<sumRecord)
+                page++;
+
+            txbPageCustomer.Text = page.ToString();
+        }
     }
 }
