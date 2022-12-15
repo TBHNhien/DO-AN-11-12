@@ -915,5 +915,16 @@ namespace QLQUANCF
         {
 
         }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
     }
 }
